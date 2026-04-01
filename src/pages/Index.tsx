@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, FormEvent } from "react";
 import Icon from "@/components/ui/icon";
+import { useToast } from "@/components/ui/use-toast";
 
 const useInView = (threshold = 0.15) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -13,6 +14,10 @@ const useInView = (threshold = 0.15) => {
     return () => observer.disconnect();
   }, [threshold]);
   return { ref, inView };
+};
+
+const scrollToForm = () => {
+  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 };
 
 const courseFormats = [
@@ -141,6 +146,45 @@ export default function Index() {
   const advantagesSection = useInView(0.1);
   const ctaSection = useInView(0.1);
 
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim()) {
+      toast({
+        title: "Заполните все поля",
+        description: "Имя, телефон и email обязательны для заполнения",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: "Некорректный email",
+        description: "Пожалуйста, введите правильный адрес электронной почты",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    // Имитация отправки формы
+    setTimeout(() => {
+      toast({
+        title: "Заявка отправлена!",
+        description: "Наш менеджер свяжется с вами в ближайшее время",
+      });
+      setFormData({ name: "", phone: "", email: "" });
+      setIsSubmitting(false);
+    }, 1000);
+  };
+
   return (
     <div className="min-h-screen bg-[#F4F8FB] text-[#1A2B3C] font-ibm overflow-x-hidden">
 
@@ -164,7 +208,10 @@ export default function Index() {
             <a href="#advantages" className="hover:text-[#1A6FA8] transition-colors duration-200 font-medium">Преимущества</a>
             <a href="#contact" className="hover:text-[#1A6FA8] transition-colors duration-200 font-medium">Контакты</a>
           </div>
-          <button className="bg-[#1A6FA8] text-white text-sm px-6 py-2.5 rounded-lg hover:bg-[#155d8f] transition-all duration-200 tracking-wide font-semibold shadow-sm hover:shadow-md">
+          <button
+            onClick={scrollToForm}
+            className="bg-[#1A6FA8] text-white text-sm px-6 py-2.5 rounded-lg hover:bg-[#155d8f] transition-all duration-200 tracking-wide font-semibold shadow-sm hover:shadow-md"
+          >
             Записаться
           </button>
         </div>
@@ -231,7 +278,10 @@ export default function Index() {
                 transitionDelay: "550ms",
               }}
             >
-              <button className="bg-[#1A6FA8] text-white px-8 py-3.5 rounded-lg text-sm font-semibold tracking-wide hover:bg-[#155d8f] transition-all duration-200 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg flex items-center gap-2">
+              <button
+                onClick={scrollToForm}
+                className="bg-[#1A6FA8] text-white px-8 py-3.5 rounded-lg text-sm font-semibold tracking-wide hover:bg-[#155d8f] transition-all duration-200 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg flex items-center gap-2"
+              >
                 <Icon name="Calendar" size={16} />
                 Записаться на курс
               </button>
@@ -377,11 +427,14 @@ export default function Index() {
                   <div className={`font-montserrat text-3xl font-semibold mb-4 ${fmt.highlight ? "text-white" : "text-[#1A2B3C]"}`}>
                     {fmt.price}
                   </div>
-                  <button className={`w-full text-xs tracking-wide font-semibold uppercase py-3 rounded-lg transition-all duration-200
+                  <button
+                    onClick={scrollToForm}
+                    className={`w-full text-xs tracking-wide font-semibold uppercase py-3 rounded-lg transition-all duration-200
                     ${fmt.highlight
                       ? "bg-white text-[#1A6FA8] hover:bg-[#EBF5FD]"
                       : "bg-[#1A6FA8] text-white hover:bg-[#155d8f]"
-                    }`}>
+                    }`}
+                  >
                     Хочу учиться
                   </button>
                 </div>
@@ -551,22 +604,46 @@ export default function Index() {
             и даты начала обучения.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto mb-6">
+          <form onSubmit={handleFormSubmit} className="max-w-lg mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <input
+                type="text"
+                placeholder="Ваше имя"
+                value={formData.name}
+                onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
+                className="bg-white/10 border border-white/25 text-white placeholder-white/50 px-5 py-3.5 rounded-xl text-sm focus:outline-none focus:border-white/60 transition-colors duration-200"
+              />
+              <input
+                type="tel"
+                placeholder="Телефон"
+                value={formData.phone}
+                onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
+                className="bg-white/10 border border-white/25 text-white placeholder-white/50 px-5 py-3.5 rounded-xl text-sm focus:outline-none focus:border-white/60 transition-colors duration-200"
+              />
+            </div>
             <input
-              type="text"
-              placeholder="Ваше имя"
-              className="flex-1 bg-white/10 border border-white/25 text-white placeholder-white/50 px-5 py-3.5 rounded-xl text-sm focus:outline-none focus:border-white/60 transition-colors duration-200"
+              type="email"
+              placeholder="Электронная почта"
+              value={formData.email}
+              onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+              className="w-full bg-white/10 border border-white/25 text-white placeholder-white/50 px-5 py-3.5 rounded-xl text-sm focus:outline-none focus:border-white/60 transition-colors duration-200 mb-6"
             />
-            <input
-              type="tel"
-              placeholder="Телефон"
-              className="flex-1 bg-white/10 border border-white/25 text-white placeholder-white/50 px-5 py-3.5 rounded-xl text-sm focus:outline-none focus:border-white/60 transition-colors duration-200"
-            />
-          </div>
 
-          <button className="bg-white text-[#1A6FA8] px-10 py-4 rounded-xl text-sm font-bold tracking-wide hover:bg-[#EBF5FD] transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg">
-            Хочу учиться
-          </button>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-white text-[#1A6FA8] px-10 py-4 rounded-xl text-sm font-bold tracking-wide hover:bg-[#EBF5FD] transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg disabled:opacity-60 disabled:hover:scale-100 flex items-center gap-2 mx-auto"
+            >
+              {isSubmitting ? (
+                <>
+                  <Icon name="Loader2" size={16} className="animate-spin" />
+                  Отправка...
+                </>
+              ) : (
+                "Хочу учиться"
+              )}
+            </button>
+          </form>
 
           <p className="mt-6 text-xs text-white/40 tracking-wide">
             Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
