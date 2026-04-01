@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				cormorant: ['Cormorant Garamond', 'serif'],
-				golos: ['Golos Text', 'sans-serif'],
+				montserrat: ['Montserrat', 'sans-serif'],
+				ibm: ['IBM Plex Sans', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

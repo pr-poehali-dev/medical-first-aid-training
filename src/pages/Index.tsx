@@ -142,7 +142,7 @@ export default function Index() {
   const ctaSection = useInView(0.1);
 
   return (
-    <div className="min-h-screen bg-[#F4F8FB] text-[#1A2B3C] font-golos overflow-x-hidden">
+    <div className="min-h-screen bg-[#F4F8FB] text-[#1A2B3C] font-ibm overflow-x-hidden">
 
       {/* Subtle top accent bar */}
       <div className="h-1 w-full bg-gradient-to-r from-[#1A6FA8] via-[#2AACE2] to-[#1A6FA8]" />
@@ -154,7 +154,7 @@ export default function Index() {
             <div className="w-9 h-9 rounded-lg bg-[#1A6FA8] flex items-center justify-center">
               <Icon name="Cross" size={18} className="text-white" />
             </div>
-            <span className="font-cormorant text-2xl font-bold tracking-widest text-[#1A6FA8]">
+            <span className="font-montserrat text-2xl font-bold tracking-widest text-[#1A6FA8]">
               МИРК
             </span>
           </div>
@@ -197,7 +197,7 @@ export default function Index() {
             </div>
 
             <h1
-              className="font-cormorant text-5xl md:text-6xl lg:text-7xl font-light leading-[1.05] mb-6 transition-all duration-1000 text-[#1A2B3C]"
+              className="font-montserrat text-5xl md:text-6xl lg:text-7xl font-light leading-[1.05] mb-6 transition-all duration-1000 text-[#1A2B3C]"
               style={{
                 opacity: hero.inView ? 1 : 0,
                 transform: hero.inView ? "translateY(0)" : "translateY(40px)",
@@ -263,7 +263,7 @@ export default function Index() {
                   </div>
                   <div>
                     <div className="flex items-baseline gap-1">
-                      <span className="font-cormorant text-2xl text-[#1A2B3C] font-semibold">{stat.value}</span>
+                      <span className="font-montserrat text-2xl text-[#1A2B3C] font-semibold">{stat.value}</span>
                       <span className="text-xs text-[#1A6FA8] font-medium">{stat.unit}</span>
                     </div>
                     <span className="text-xs text-[#7A9AB5] uppercase tracking-wide">{stat.label}</span>
@@ -282,7 +282,7 @@ export default function Index() {
             <span className="inline-block text-xs tracking-[0.35em] uppercase text-[#1A6FA8] font-semibold mb-4 bg-[#EBF5FD] px-3 py-1.5 rounded-md">
               О программе
             </span>
-            <h2 className="font-cormorant text-4xl md:text-5xl font-light leading-tight mb-6 text-[#1A2B3C]">
+            <h2 className="font-montserrat text-4xl md:text-5xl font-light leading-tight mb-6 text-[#1A2B3C]">
               Обязательное обучение<br />
               <em className="italic text-[#1A6FA8] font-normal">по Трудовому Кодексу</em>
             </h2>
@@ -330,7 +330,7 @@ export default function Index() {
             <span className="inline-block text-xs tracking-[0.35em] uppercase text-[#1A6FA8] font-semibold mb-4 bg-[#EBF5FD] px-3 py-1.5 rounded-md">
               Варианты обучения
             </span>
-            <h2 className="font-cormorant text-4xl md:text-5xl font-light text-[#1A2B3C]">
+            <h2 className="font-montserrat text-4xl md:text-5xl font-light text-[#1A2B3C]">
               Выберите <em className="italic text-[#1A6FA8] font-normal">удобный формат</em>
             </h2>
           </div>
@@ -374,7 +374,7 @@ export default function Index() {
                   <span className="leading-relaxed">{fmt.schedule}</span>
                 </div>
                 <div className={`border-t pt-5 mt-auto ${fmt.highlight ? "border-white/20" : "border-[#DCE9F3]"}`}>
-                  <div className={`font-cormorant text-3xl font-semibold mb-4 ${fmt.highlight ? "text-white" : "text-[#1A2B3C]"}`}>
+                  <div className={`font-montserrat text-3xl font-semibold mb-4 ${fmt.highlight ? "text-white" : "text-[#1A2B3C]"}`}>
                     {fmt.price}
                   </div>
                   <button className={`w-full text-xs tracking-wide font-semibold uppercase py-3 rounded-lg transition-all duration-200
@@ -404,7 +404,7 @@ export default function Index() {
             <span className="inline-block text-xs tracking-[0.35em] uppercase text-[#1A6FA8] font-semibold mb-4 bg-white px-3 py-1.5 rounded-md">
               Аудитория
             </span>
-            <h2 className="font-cormorant text-4xl md:text-5xl font-light text-[#1A2B3C]">
+            <h2 className="font-montserrat text-4xl md:text-5xl font-light text-[#1A2B3C]">
               Кому <em className="italic text-[#1A6FA8] font-normal">подойдёт</em> программа
             </h2>
           </div>
@@ -424,7 +424,7 @@ export default function Index() {
                   <Icon name={item.icon} size={26} className="text-[#1A6FA8] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
-                  <h3 className="font-cormorant text-xl font-semibold text-[#1A2B3C] mb-2">{item.title}</h3>
+                  <h3 className="font-montserrat text-xl font-semibold text-[#1A2B3C] mb-2">{item.title}</h3>
                   <p className="text-[#4A6580] text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -446,7 +446,7 @@ export default function Index() {
             <span className="inline-block text-xs tracking-[0.35em] uppercase text-[#1A6FA8] font-semibold mb-4 bg-[#EBF5FD] px-3 py-1.5 rounded-md">
               Содержание обучения
             </span>
-            <h2 className="font-cormorant text-4xl md:text-5xl font-light text-[#1A2B3C]">
+            <h2 className="font-montserrat text-4xl md:text-5xl font-light text-[#1A2B3C]">
               Учебная <em className="italic text-[#1A6FA8] font-normal">программа</em>
             </h2>
           </div>
@@ -463,10 +463,10 @@ export default function Index() {
                 }}
               >
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-[#1A6FA8] text-white flex items-center justify-center text-lg font-cormorant font-bold shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#1A6FA8] text-white flex items-center justify-center text-lg font-montserrat font-bold shrink-0">
                     {mod.num}
                   </div>
-                  <h3 className="font-cormorant text-xl font-semibold text-[#1A2B3C] leading-snug pt-1">{mod.title}</h3>
+                  <h3 className="font-montserrat text-xl font-semibold text-[#1A2B3C] leading-snug pt-1">{mod.title}</h3>
                 </div>
                 <ul className="space-y-3">
                   {mod.topics.map((topic, j) => (
@@ -495,7 +495,7 @@ export default function Index() {
             <span className="inline-block text-xs tracking-[0.35em] uppercase text-[#1A6FA8] font-semibold mb-4 bg-[#EBF5FD] px-3 py-1.5 rounded-md">
               Почему МИРК
             </span>
-            <h2 className="font-cormorant text-4xl md:text-5xl font-light text-[#1A2B3C]">
+            <h2 className="font-montserrat text-4xl md:text-5xl font-light text-[#1A2B3C]">
               Преимущества <em className="italic text-[#1A6FA8] font-normal">обучения</em>
             </h2>
           </div>
@@ -514,7 +514,7 @@ export default function Index() {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#EBF5FD] mb-5 group-hover:bg-[#1A6FA8] transition-colors duration-300">
                   <Icon name={adv.icon} size={28} className="text-[#1A6FA8] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="font-cormorant text-xl font-semibold text-[#1A2B3C] mb-3">{adv.title}</h3>
+                <h3 className="font-montserrat text-xl font-semibold text-[#1A2B3C] mb-3">{adv.title}</h3>
                 <p className="text-[#4A6580] text-sm leading-relaxed">{adv.desc}</p>
               </div>
             ))}
@@ -540,7 +540,7 @@ export default function Index() {
             Записаться на курс
           </div>
 
-          <h2 className="font-cormorant text-5xl md:text-6xl font-light leading-tight mb-5 text-white">
+          <h2 className="font-montserrat text-5xl md:text-6xl font-light leading-tight mb-5 text-white">
             Готовы освоить
             <br />
             <em className="italic font-normal text-[#A8D8F0]">навыки спасения жизней?</em>
@@ -581,7 +581,7 @@ export default function Index() {
             <div className="w-8 h-8 rounded-lg bg-[#1A6FA8] flex items-center justify-center">
               <Icon name="Cross" size={15} className="text-white" />
             </div>
-            <span className="font-cormorant text-xl font-bold tracking-widest text-white">МИРК</span>
+            <span className="font-montserrat text-xl font-bold tracking-widest text-white">МИРК</span>
           </div>
           <div className="text-xs text-white/40 tracking-wide text-center">
             Медицинский институт развития квалификации&nbsp;&nbsp;·&nbsp;&nbsp;
